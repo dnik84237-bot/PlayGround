@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#07130f" />
+  <title>ГОЛ! — Футбольные паки</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Главная навигация">
+      <a class="brand" href="#home" aria-label="ГОЛ! главная"><span class="brand-mark">Г</span><span class="brand-name">ГОЛ<span>!</span></span></a>
+      <div class="sidebar-label">МЕНЮ</div>
+      <nav class="main-nav">
+        <button class="nav-item active" data-view="home"><span class="nav-icon">⌂</span><span>Главная</span></button>
+        <button class="nav-item" data-view="squad"><span class="nav-icon">♙</span><span>Моя команда</span><b class="nav-count" id="squadCount">0</b></button>
+        <button class="nav-item" data-view="collection"><span class="nav-icon">▤</span><span>Коллекция</span></button>
+        <button class="nav-item" data-view="challenges"><span class="nav-icon">✦</span><span>Задания</span><i class="nav-dot"></i></button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="side-card"><div class="side-card-icon">🏆</div><div><strong>Собери легенд</strong><small>Путь к футбольной славе</small></div><div class="side-progress"><span id="sideProgress"></span></div></div>
+        <button class="profile"><span class="avatar">М</span><span class="profile-text"><strong>Мой клуб</strong><small>Новичок · уровень 1</small></span><span class="more">···</span></button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="mobile-brand"><span class="brand-mark">Г</span><span class="brand-name">ГОЛ<span>!</span></span></div>
+        <div class="season-tag"><span class="live-dot"></span> СЕЗОН 01 <span class="season-divider">/</span> ПУТЬ ЛЕГЕНД</div>
+        <div class="topbar-right"><button class="help-btn" id="helpBtn" aria-label="Как играть">?</button><div class="wallet"><span class="coin-icon">◉</span><strong id="coinBalance">1 250</strong><span class="coin-label">монет</span><button class="add-coins" id="earnCoins" aria-label="Получить монеты">+</button></div><button class="mobile-menu" id="mobileMenu" aria-label="Открыть меню">☰</button></div>
+      </header>
+
+      <section class="view active" id="homeView">
+        <div class="welcome-row"><div><div class="eyebrow"><span class="eyebrow-line"></span> ТВОЯ ФУТБОЛЬНАЯ ИСТОРИЯ НАЧИНАЕТСЯ</div><h1>ОТКРОЙ СВОЮ<br><em>ЛЕГЕНДУ.</em></h1><p class="welcome-copy">Звёзды настоящего. Имена, которые навсегда в истории.<br class="desktop-break"> Собери команду мечты — один пак за другим.</p></div><div class="welcome-stat"><div class="stat-orbit">✦</div><span>ТВОЙ РЕЙТИНГ</span><strong id="teamRating">—</strong><small>КОМАНДА</small></div></div>
+
+        <section class="arena" aria-label="Открытие футбольного пака">
+          <div class="arena-lights"></div><div class="stadium-rig"><i></i><i></i><i></i><i></i></div>
+          <div class="arena-top"><span class="arena-kicker"><span class="pulse"></span> ПАК НЕДЕЛИ</span><span class="pack-odds">ГАРАНТИЯ: <b>РЕДКИЙ ИЛИ ЛУЧШЕ</b></span></div>
+          <div class="arena-floor"></div>
+          <div class="pack-stage" id="packStage">
+            <div class="pack-glow"></div>
+            <div class="pack-wrap" id="packWrap" role="img" aria-label="Запечатанный футбольный пак">
+              <div class="pack-side"></div><div class="pack-face"><div class="pack-top-label">GOL! <span>CARDS</span></div><div class="pack-shield"><span>★</span><small>ДОРОГА<br>К СЛАВЕ</small></div><div class="pack-ball">⚽</div><div class="pack-bottom"><b>ЛИГИ МИРА</b><span>VOL. 01</span></div><div class="pack-sheen"></div></div><div class="pack-ribbon">ОТКРОЙ МОМЕНТ</div>
+            </div>
+            <div class="reveal-cards" id="revealCards" aria-live="polite"></div>
+            <div class="pack-caption" id="packCaption"><span class="caption-star">✦</span> КАЖДЫЙ ПАК — НОВАЯ ИСТОРИЯ <span class="caption-star">✦</span></div>
+          </div>
+          <div class="arena-bottom"><div class="pack-info"><div class="pack-mini-icon">⚽</div><div><strong>ПАК «ПУТЬ ЛЕГЕНД»</strong><small>3 футболиста · шанс на легенду</small></div></div><button class="open-button" id="openPack"><span class="button-label">ОТКРЫТЬ ПАК</span><span class="button-cost"><span class="coin-icon">◉</span> 250</span><span class="button-arrow">↗</span></button></div>
+          <div class="tap-hint" id="tapHint">Нажми на пак, чтобы открыть его</div>
+        </section>
+
+        <section class="lower-grid"><div class="section-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span> ТВОЯ ДОРОГА</div><h2>ПЕРВЫЕ ШАГИ</h2></div><button class="text-link" data-goto="challenges">ВСЕ ЗАДАНИЯ <span>↗</span></button></div>
+          <div class="mission-row"><article class="mission-card"><div class="mission-icon green-icon">▤</div><div class="mission-copy"><span>ЗАДАНИЕ 01</span><strong>Открой свой первый пак</strong><div class="mission-track"><i id="missionOpenProgress"></i></div></div><div class="mission-reward"><span>◉</span> +100</div><div class="mission-check" id="missionOpenCheck">○</div></article><article class="mission-card"><div class="mission-icon gold-icon">♙</div><div class="mission-copy"><span>ЗАДАНИЕ 02</span><strong>Собери 5 футболистов</strong><div class="mission-track"><i id="missionCollectProgress"></i></div></div><div class="mission-reward"><span>◉</span> +150</div><div class="mission-check" id="missionCollectCheck">○</div></article></div>
+          <div class="recent-heading"><h3>ПОСЛЕДНИЕ НАХОДКИ</h3><button data-goto="collection">КОЛЛЕКЦИЯ <span>↗</span></button></div><div class="recent-list" id="recentList"><div class="empty-state"><span>✦</span><p>Пока пусто. Твоя первая звезда уже ждёт.</p></div></div>
+        </section>
+      </section>
+
+      <section class="view subview" id="collectionView"><div class="subview-head"><div><div class="eyebrow"><span class="eyebrow-line"></span> АРХИВ КЛУБА</div><h1>ТВОЯ <em>КОЛЛЕКЦИЯ.</em></h1><p>Каждая карточка — часть твоей футбольной истории.</p></div><div class="collection-count"><strong id="collectionTotal">00</strong><span>КАРТОЧЕК</span></div></div><div class="filter-row"><button class="filter-chip active" data-filter="all">Все <span id="filterAll">0</span></button><button class="filter-chip" data-filter="legend">Легенды</button><button class="filter-chip" data-filter="star">Звёзды</button><button class="filter-chip" data-filter="gold">Золотые</button></div><div class="collection-grid" id="collectionGrid"></div></section>
+
+      <section class="view subview" id="squadView"><div class="subview-head"><div><div class="eyebrow"><span class="eyebrow-line"></span> ТВОЙ СОСТАВ</div><h1>КОМАНДА <em>МЕЧТЫ.</em></h1><p>Выбери до пяти игроков. Сильнейшие выйдут на поле.</p></div><div class="collection-count"><strong id="squadRating">—</strong><span>РЕЙТИНГ</span></div></div><div class="pitch" id="pitch"><div class="pitch-lines"></div><div class="pitch-slots" id="pitchSlots"></div></div><div class="squad-pool-title"><h3>ДОСТУПНЫЕ ИГРОКИ</h3><span id="squadPoolCount">0 В КОЛЛЕКЦИИ</span></div><div class="squad-pool" id="squadPool"></div></section>
+
+      <section class="view subview" id="challengesView"><div class="subview-head"><div><div class="eyebrow"><span class="eyebrow-line"></span> КАЖДЫЙ ЧЕМПИОН С ЧЕГО-ТО НАЧИНАЛ</div><h1>ПУТЬ <em>К ЛЕГЕНДЕ.</em></h1><p>Выполняй задания и пополняй кошелёк клуба.</p></div><div class="collection-count"><strong id="challengeDone">0/3</strong><span>ВЫПОЛНЕНО</span></div></div><div class="challenge-list" id="challengeList"></div><div class="challenge-note"><span>✦</span><div><strong>Маленький совет</strong><p>Дубликаты футболистов превращаются в монеты — ни один пак не бывает впустую.</p></div></div></section>
+
+      <footer class="footer"><span>ГОЛ! <b>·</b> ТВОЯ ИГРА. ТВОИ ЛЕГЕНДЫ.</span><span>НЕОФИЦИАЛЬНАЯ ФАН-ИГРА · 2026</span></footer>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <div class="modal-backdrop" id="modalBackdrop"><div class="modal" role="dialog" aria-modal="true"><button class="modal-close" id="modalClose">×</button><div class="modal-star">✦</div><div class="eyebrow"><span class="eyebrow-line"></span> КАК ИГРАТЬ</div><h2>ОТКРОЙ.<br><em>СОБЕРИ. СЛАВЬСЯ.</em></h2><p>Трать монеты на паки и открывай футболистов — от звёзд сегодняшнего дня до величайших легенд. Добавляй любимцев в стартовый состав и выполняй задания, чтобы заработать ещё.</p><div class="modal-steps"><div><b>01</b><span>Пак стоит 250 монет и содержит трёх игроков.</span></div><div><b>02</b><span>Выбирай до пяти карточек для своей команды.</span></div><div><b>03</b><span>Выполняй задания. Дубликаты дают монеты!</span></div></div><button class="open-button modal-done" id="modalDone"><span class="button-label">ПОНЯТНО, ПОЕХАЛИ</span><span class="button-arrow">↗</span></button></div></div>
+  <div class="modal-backdrop" id="rewardBackdrop"><div class="modal reward-modal" role="dialog" aria-modal="true"><button class="modal-close" id="rewardClose">×</button><div class="reward-burst">✦</div><div class="eyebrow"><span class="eyebrow-line"></span> НАГРАДА КЛУБА</div><h2 id="rewardTitle">ЗАДАНИЕ<br><em>ВЫПОЛНЕНО!</em></h2><p id="rewardMessage">Ты заслужил награду.</p><div class="reward-coins">◉ <b id="rewardAmount">+100</b> <span>МОНЕТ</span></div><button class="open-button modal-done" id="rewardDone"><span class="button-label">ЗАБРАТЬ НАГРАДУ</span><span class="button-arrow">↗</span></button></div></div>
+  <script src="game.js"></script>
+</body>
+</html>
